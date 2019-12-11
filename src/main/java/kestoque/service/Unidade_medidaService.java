@@ -21,6 +21,8 @@ import kestoque.entities.Unidade_medida;
 import kestoque.repository.Unidade_medidaRepository;
 
 
+//Jeferson Knop
+
 
 @RestController
 @RequestMapping("/unidades_medida")
