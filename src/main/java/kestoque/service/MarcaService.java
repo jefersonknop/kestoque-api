@@ -43,7 +43,7 @@ public class MarcaService {
 			return new ResponseModel(1,"Registro salvo com sucesso!");
  
 		}catch(Exception e) { 
-			return new ResponseModel(0,e.getMessage()+ " - - - - "+ marca.getInquilino_id());			
+			return new ResponseModel(0,e.getMessage()+ " - - - - "+ marca.getId());			
 		}
 	}
 	

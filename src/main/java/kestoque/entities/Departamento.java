@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
-public class Marca {
+public class Departamento {
 	@Id
 	@GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
@@ -22,9 +22,9 @@ public class Marca {
     private String nome;	
 
 
-    @JoinColumn(name = "fabricante", referencedColumnName = "id")
+    @JoinColumn(name = "divisao", referencedColumnName = "id")
     @ManyToOne
-	private Fabricante  fabricante;
+	private Divisao  divisao;
 	
 	
     @Size (max = 1024)
@@ -48,12 +48,12 @@ public class Marca {
 		this.nome = nome;
 	}
 
-	public Fabricante getFabricante() {
-		return fabricante;
+	public Divisao getDivisao() {
+		return divisao;
 	}
 
-	public void setFabricante(Fabricante fabricante) {
-		this.fabricante = fabricante;
+	public void setDivisao(Divisao divisao) {
+		this.divisao = divisao;
 	}
 
 	public String getInformacoes() {
@@ -88,7 +88,7 @@ public class Marca {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Marca other = (Marca) obj;
+		Departamento other = (Departamento) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -96,6 +96,7 @@ public class Marca {
 			return false;
 		return true;
 	}
+
 
 
 	

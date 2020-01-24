@@ -17,43 +17,43 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kestoque.entities.ResponseModel;
-import kestoque.entities.Fabricante;
-import kestoque.repository.FabricanteRepository;
+import kestoque.entities.Divisao;
+import kestoque.repository.DivisaoRepository;
 
 
 //Jeferson Knop
 
 
 @RestController
-@RequestMapping("/fabricantes")
+@RequestMapping("/divisoes")
 @CrossOrigin(origins = "*")
 
-public class FabricanteService {
+public class DivisaoService {
 	
 	@Autowired
-	private FabricanteRepository fabricanteRepository;
+	private DivisaoRepository divisaoRepository;
 	
 	
 
 	@PostMapping
-	public @ResponseBody ResponseModel save(@RequestBody Fabricante fabricante){ 
+	public @ResponseBody ResponseModel save(@RequestBody Divisao divisao){ 
  
 		try { 
-			this.fabricanteRepository.save(fabricante); 
+			this.divisaoRepository.save(divisao); 
 			return new ResponseModel(1,"Registro salvo com sucesso!");
  
 		}catch(Exception e) { 
-			return new ResponseModel(0,e.getMessage()+ " - - - - "+ fabricante.getId());			
+			return new ResponseModel(0,e.getMessage()+ " - - - - "+ divisao.getId());			
 		}
 	}
 	
 
 	@PutMapping
-	public @ResponseBody ResponseModel update(@RequestBody Fabricante fabricante){
+	public @ResponseBody ResponseModel update(@RequestBody Divisao divisao){
  
 		try {
  
-			this.fabricanteRepository.save(fabricante);		
+			this.divisaoRepository.save(divisao);		
  
 			return new ResponseModel(1,"Registro atualizado com sucesso!");
  
@@ -66,14 +66,14 @@ public class FabricanteService {
 	
 	@DeleteMapping("/{id}")	
 	public @ResponseBody ResponseModel delete(@PathVariable("id") Long id){ 
-		Optional <Fabricante> fabricante = fabricanteRepository.findById(id);
-		if (!fabricante.isPresent()) {				
+		Optional <Divisao> divisao = divisaoRepository.findById(id);
+		if (!divisao.isPresent()) {				
 			return new ResponseModel(0, "Registro inexistente!");						
 		
 		}
 		else { 		
 			try {	 
-				fabricanteRepository.delete(fabricante.get());	 
+				divisaoRepository.delete(divisao.get());	 
 				return new ResponseModel(1, "Registro excluido com sucesso!");
 	 
 			}catch(Exception e) {
@@ -86,20 +86,20 @@ public class FabricanteService {
 
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Fabricante> findById (@PathVariable Long id){
-		Optional<Fabricante> fabricante = fabricanteRepository.findById(id);
+	public ResponseEntity<Divisao> findById (@PathVariable Long id){
+		Optional<Divisao> divisao = divisaoRepository.findById(id);
 		
-		if (fabricante == null) 
+		if (divisao == null) 
 			return ResponseEntity.notFound().build();	 
 		else
-			return ResponseEntity.ok(fabricante.get());
+			return ResponseEntity.ok(divisao.get());
 					
 	}
 
 
 	@GetMapping("/inquilino/{inquilino}")
-	public @ResponseBody List<Fabricante> findAll(@PathVariable Long inquilino){
-		return this.fabricanteRepository.findByInquilino(inquilino);
+	public @ResponseBody List<Divisao> findAll(@PathVariable Long inquilino){
+		return this.divisaoRepository.findByInquilino(inquilino);
 		//return this.linhaRepository.findAll();
 	}
 	

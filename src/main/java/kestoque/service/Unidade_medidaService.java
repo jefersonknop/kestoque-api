@@ -43,7 +43,7 @@ public class Unidade_medidaService {
 			return new ResponseModel(1,"Registro salvo com sucesso!");
  
 		}catch(Exception e) { 
-			return new ResponseModel(0,e.getMessage()+ " - - - - "+ unidade_medida.getInquilino_id());			
+			return new ResponseModel(0,e.getMessage()+ " - - - - "+ unidade_medida.getId());			
 		}
 	}
 	

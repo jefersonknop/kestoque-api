@@ -3,16 +3,12 @@ package kestoque.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
-
-
 @Entity
-public class Marca {
+public class Divisao {
 	@Id
 	@GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
@@ -20,57 +16,53 @@ public class Marca {
 	
 	@Size (max = 100)
     private String nome;	
-
-
-    @JoinColumn(name = "fabricante", referencedColumnName = "id")
-    @ManyToOne
-	private Fabricante  fabricante;
+	//@NotEmpty
+	@Size (max = 1024)
+    private String informacoes;
 	
 	
-    @Size (max = 1024)
-	private String informacoes;	
-
 	private Long inquilino_id;
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getNome() {
 		return nome;
 	}
 
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public Fabricante getFabricante() {
-		return fabricante;
-	}
-
-	public void setFabricante(Fabricante fabricante) {
-		this.fabricante = fabricante;
-	}
 
 	public String getInformacoes() {
 		return informacoes;
 	}
 
+
 	public void setInformacoes(String informacoes) {
 		this.informacoes = informacoes;
 	}
+
 
 	public Long getInquilino_id() {
 		return inquilino_id;
 	}
 
+
 	public void setInquilino_id(Long inquilino_id) {
 		this.inquilino_id = inquilino_id;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -80,6 +72,7 @@ public class Marca {
 		return result;
 	}
 
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -88,7 +81,7 @@ public class Marca {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Marca other = (Marca) obj;
+		Divisao other = (Divisao) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -96,11 +89,9 @@ public class Marca {
 			return false;
 		return true;
 	}
-
-
 	
-
-
+	
+	
 	 
 	 
 

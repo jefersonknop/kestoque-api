@@ -98,7 +98,7 @@ public class Tab_cestService {
 
 
 	@GetMapping
-	public @ResponseBody List<Tab_cest> findAll(@PathVariable Long inquilino){
+	public @ResponseBody List<Tab_cest> findAll(){
 		
 		return this.tab_cestRepository.findAll();
 	}
